@@ -1,7 +1,7 @@
 from problem import Problem
 from uniform_cost_search import uniform_cost_search
 from a_star_misplaced import a_star_misplaced
-from a_star_euclidean import a_star_euclidean
+from a_star_manhattan import a_star_manhattan
 import time
 
 # prints board state in a row by row format
@@ -25,7 +25,7 @@ else:
 print("Enter your choice of algorithm:")
 print("1. Uniform Cost Search")
 print("2. A* with the Misplaced Tile heuristic")
-print("3. A* with the Euclidean distance heuristic")
+print("3. A* with the Manhattan distance heuristic")
 algorithm_choice = int(input())
 
 # CPU TIME STARTS
@@ -39,7 +39,7 @@ if algorithm_choice == 1:
 elif algorithm_choice == 2:
     solution_node, frontier_size, nodes_expanded = a_star_misplaced(problem)
 elif algorithm_choice == 3:
-     solution_node, frontier_size, nodes_expanded = a_star_euclidean(problem)
+     solution_node, frontier_size, nodes_expanded = a_star_manhattan(problem)
 else:
     print("Invalid choice of algorithm.")
     exit()
@@ -87,7 +87,7 @@ if solution_node:
         cpu_time_used = end_cpu_time - start_cpu_time
         print(f"CPU time used: {cpu_time_used} seconds")
 
-    # 3. A* with the Euclidean distance heuristic code:
+    # 3. A* with the Manhattan distance heuristic code:
     if algorithm_choice == 3:
         print_state(initial_state)  # Print initial state
         print("The best state to expand with g(n) = 0 and h(n) =", solution_node[0].heuristic)  # Print initial heuristic cost
